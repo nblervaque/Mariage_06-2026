@@ -293,7 +293,7 @@ import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTim
 
 const app     = initializeApp(FIREBASE_CONFIG);
 const storage = getStorage(app);
-const db      = getFirestore(app);
+const db      = getFirestore(app, "mariage2026");
 
 document.getElementById('firebaseLoader').style.display = 'none';
 document.getElementById('appContainer').style.display   = 'block';
