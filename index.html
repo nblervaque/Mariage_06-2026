@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Notre Mariage 💍</title>
+<title>Mariage Magali & Philippe 💍</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
 
@@ -21,297 +21,160 @@
     --border: rgba(201,169,110,0.25);
   }
 
-  html, body {
-    min-height: 100vh;
-    background: var(--cream);
-    font-family: 'Jost', sans-serif;
-    color: var(--charcoal);
-    overflow-x: hidden;
-  }
+  html, body { min-height: 100vh; background: var(--cream); font-family: 'Jost', sans-serif; color: var(--charcoal); overflow-x: hidden; }
 
   body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
+    content: ''; position: fixed; inset: 0;
     background:
       radial-gradient(ellipse 60% 40% at 10% 0%, rgba(232,196,176,0.3) 0%, transparent 60%),
       radial-gradient(ellipse 50% 50% at 90% 100%, rgba(138,158,140,0.2) 0%, transparent 60%),
       radial-gradient(ellipse 40% 30% at 50% 50%, rgba(201,169,110,0.08) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+    pointer-events: none; z-index: 0;
   }
 
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
-  }
+  .container { position: relative; z-index: 1; max-width: 520px; margin: 0 auto; padding: 0 20px 60px; }
 
   .header { text-align: center; padding: 52px 0 36px; }
   .header-ornament { font-size: 28px; margin-bottom: 12px; opacity: 0.7; letter-spacing: 12px; }
-
-  .header h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 9vw, 52px);
-    font-weight: 300;
-    letter-spacing: 2px;
-    color: var(--charcoal);
-    line-height: 1.1;
-  }
-
+  .header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 9vw, 52px); font-weight: 300; letter-spacing: 2px; color: var(--charcoal); line-height: 1.1; }
   .header h1 em { font-style: italic; color: var(--blush-deep); }
+  .header-date { font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); margin-top: 16px; }
+  .header-divider { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 20px auto 0; }
 
-  .header-date {
-    font-size: 12px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 16px;
-  }
+  .upload-card, .gallery-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 20px; padding: 32px 28px; margin-bottom: 24px; position: relative; overflow: hidden; }
+  .upload-card::before { content: ''; position: absolute; top: -1px; left: 20px; right: 20px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .gallery-card::before { content: ''; position: absolute; top: -1px; left: 20px; right: 20px; height: 2px; background: linear-gradient(90deg, transparent, var(--sage), transparent); }
 
-  .header-divider {
-    width: 80px; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 20px auto 0;
-  }
-
-  .config-warning {
-    background: #fff3cd;
-    border: 1px solid #ffc107;
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    line-height: 1.6;
-    display: none;
-  }
-  .config-warning.visible { display: block; }
-  .config-warning strong { display: block; margin-bottom: 4px; font-size: 14px; }
-  .config-warning code { background: rgba(0,0,0,0.07); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
-
-  .upload-card, .gallery-card {
-    background: var(--warm-white);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 32px 28px;
-    margin-bottom: 24px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .upload-card::before {
-    content: '';
-    position: absolute;
-    top: -1px; left: 20px; right: 20px; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-
-  .gallery-card::before {
-    content: '';
-    position: absolute;
-    top: -1px; left: 20px; right: 20px; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--sage), transparent);
-  }
-
-  .upload-card h2, .gallery-card h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 300;
-    color: var(--charcoal);
-    margin-bottom: 6px;
-  }
-
+  .upload-card h2, .gallery-card h2 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--charcoal); margin-bottom: 6px; }
   .upload-card > p { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
 
-  .drop-zone {
-    border: 1.5px dashed var(--gold-light);
-    border-radius: 14px;
-    padding: 36px 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    background: rgba(201,169,110,0.03);
-    position: relative;
-  }
-
+  .drop-zone { border: 1.5px dashed var(--gold-light); border-radius: 14px; padding: 36px 20px; text-align: center; cursor: pointer; transition: all 0.25s ease; background: rgba(201,169,110,0.03); position: relative; }
   .drop-zone:hover, .drop-zone.dragover { border-color: var(--gold); background: rgba(201,169,110,0.08); }
-
-  .drop-zone input[type="file"] {
-    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
-  }
-
+  .drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
   .drop-icon { font-size: 40px; margin-bottom: 12px; display: block; opacity: 0.6; }
   .drop-zone strong { display: block; font-size: 15px; font-weight: 500; color: var(--charcoal); margin-bottom: 4px; }
   .drop-zone span { font-size: 12px; color: var(--muted); }
 
   .preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
-
   .preview-item { aspect-ratio: 1; border-radius: 10px; overflow: hidden; position: relative; background: var(--cream); }
   .preview-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-  .preview-item .remove-btn {
-    position: absolute; top: 4px; right: 4px;
-    width: 22px; height: 22px; border-radius: 50%;
-    background: rgba(44,37,32,0.7); color: white;
-    border: none; cursor: pointer; font-size: 13px;
-    display: flex; align-items: center; justify-content: center;
-  }
+  .preview-item .remove-btn { position: absolute; top: 4px; right: 4px; width: 22px; height: 22px; border-radius: 50%; background: rgba(44,37,32,0.7); color: white; border: none; cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; }
   .preview-item .remove-btn:hover { background: rgba(200,50,50,0.85); }
 
   .field-group { margin-top: 20px; }
-  .field-group label {
-    display: block; font-size: 11px; font-weight: 500;
-    letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
-  }
-
-  .field-group input, .field-group textarea {
-    width: 100%; background: var(--cream); border: 1px solid var(--border);
-    border-radius: 10px; padding: 12px 16px;
-    font-family: 'Jost', sans-serif; font-size: 14px; color: var(--charcoal);
-    outline: none; transition: border-color 0.2s; resize: none;
-  }
+  .field-group label { display: block; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .field-group input, .field-group textarea { width: 100%; background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: 14px; color: var(--charcoal); outline: none; transition: border-color 0.2s; resize: none; }
   .field-group input:focus, .field-group textarea:focus { border-color: var(--gold); }
   .field-group textarea { height: 80px; line-height: 1.6; }
 
-  .upload-btn {
-    width: 100%; margin-top: 24px; padding: 16px 24px;
-    background: var(--charcoal); color: var(--gold-light); border: none;
-    border-radius: 12px; font-family: 'Jost', sans-serif;
-    font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
-    cursor: pointer; transition: all 0.25s ease;
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-  }
+  .upload-btn { width: 100%; margin-top: 24px; padding: 16px 24px; background: var(--charcoal); color: var(--gold-light); border: none; border-radius: 12px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.25s ease; display: flex; align-items: center; justify-content: center; gap: 10px; }
   .upload-btn:hover:not(:disabled) { background: #3d342d; transform: translateY(-1px); }
   .upload-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
   .progress-wrap { margin-top: 16px; display: none; }
   .progress-wrap.visible { display: block; }
-
   .progress-bar-bg { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-  .progress-bar-fill {
-    height: 100%; background: linear-gradient(90deg, var(--blush-deep), var(--gold));
-    border-radius: 2px; width: 0%; transition: width 0.3s ease;
-  }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--blush-deep), var(--gold)); border-radius: 2px; width: 0%; transition: width 0.3s ease; }
   .progress-label { font-size: 12px; color: var(--muted); text-align: center; margin-top: 8px; }
 
-  .status-msg {
-    margin-top: 16px; padding: 14px 18px; border-radius: 10px;
-    font-size: 13px; text-align: center; display: none; line-height: 1.5;
-  }
+  .status-msg { margin-top: 16px; padding: 14px 18px; border-radius: 10px; font-size: 13px; text-align: center; display: none; line-height: 1.5; }
   .status-msg.visible { display: block; }
   .status-msg.success { background: rgba(138,158,140,0.15); color: #4a6e4d; border: 1px solid rgba(138,158,140,0.3); }
   .status-msg.error   { background: rgba(201,100,80,0.1); color: #8B3A2A; border: 1px solid rgba(201,100,80,0.25); }
 
-  .gallery-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; }
+  .gallery-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
   .gallery-count { font-size: 12px; color: var(--muted); letter-spacing: 1px; }
 
-  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+  .gallery-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tool-btn { padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--cream); color: var(--charcoal); font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .tool-btn:hover { border-color: var(--gold); background: rgba(201,169,110,0.08); }
+  .tool-btn.active { background: var(--charcoal); color: var(--gold-light); border-color: var(--charcoal); }
+  .download-btn { padding: 7px 16px; border-radius: 8px; border: none; background: var(--charcoal); color: var(--gold-light); font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; text-transform: uppercase; }
+  .download-btn:hover:not(:disabled) { background: #3d342d; }
+  .download-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .selection-count { font-size: 12px; color: var(--muted); margin-left: auto; }
 
-  .gallery-item { aspect-ratio: 1; border-radius: 12px; overflow: hidden; cursor: pointer; position: relative; background: var(--cream); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+  .gallery-item { aspect-ratio: 1; border-radius: 12px; overflow: hidden; cursor: pointer; position: relative; background: var(--cream); transition: transform 0.2s; }
   .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
   .gallery-item:hover img { transform: scale(1.05); }
-
-  .gallery-item .item-overlay {
-    position: absolute; inset: 0; background: rgba(44,37,32,0);
-    transition: background 0.3s; display: flex; flex-direction: column;
-    justify-content: flex-end; padding: 10px;
-  }
+  .gallery-item .item-overlay { position: absolute; inset: 0; background: rgba(44,37,32,0); transition: background 0.3s; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; }
   .gallery-item:hover .item-overlay { background: rgba(44,37,32,0.45); }
-
-  .item-author {
-    font-size: 11px; font-weight: 500; color: white; opacity: 0;
-    transition: opacity 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
+  .item-author { font-size: 11px; font-weight: 500; color: white; opacity: 0; transition: opacity 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .gallery-item:hover .item-author { opacity: 1; }
+
+  .gallery-item .select-check { position: absolute; top: 8px; left: 8px; width: 22px; height: 22px; border-radius: 50%; border: 2px solid white; background: rgba(44,37,32,0.4); display: none; align-items: center; justify-content: center; font-size: 13px; color: white; transition: all 0.2s; box-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+  body.select-mode .select-check { display: flex; }
+  body.select-mode .gallery-item { cursor: default; }
+  body.select-mode .gallery-item img { pointer-events: none; }
+  .gallery-item.selected .select-check { background: var(--gold); border-color: var(--gold); }
+  .gallery-item.selected { outline: 3px solid var(--gold); outline-offset: -3px; }
+  .gallery-item.selected img { transform: scale(0.96); }
 
   .gallery-empty { grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; }
   .gallery-empty span { display: block; font-size: 32px; margin-bottom: 12px; opacity: 0.4; }
 
-  .lightbox {
-    position: fixed; inset: 0; background: rgba(44,37,32,0.92);
-    z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px;
-  }
-  .lightbox.open { display: flex; }
+  /* Modal mot de passe */
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(44,37,32,0.6); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
+  .modal-backdrop.open { display: flex; }
+  .modal { background: var(--warm-white); border-radius: 20px; padding: 36px 32px; max-width: 360px; width: 100%; position: relative; border: 1px solid var(--border); text-align: center; }
+  .modal::before { content: ''; position: absolute; top: -1px; left: 20px; right: 20px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .modal-icon { font-size: 36px; margin-bottom: 12px; display: block; }
+  .modal h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: var(--charcoal); margin-bottom: 8px; }
+  .modal p { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+  .modal input[type="password"] { width: 100%; background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 13px 16px; font-family: 'Jost', sans-serif; font-size: 15px; color: var(--charcoal); outline: none; transition: border-color 0.2s; text-align: center; letter-spacing: 4px; margin-bottom: 8px; }
+  .modal input[type="password"]:focus { border-color: var(--gold); }
+  .modal-error { font-size: 12px; color: #8B3A2A; margin-bottom: 16px; min-height: 18px; }
+  .modal-confirm { width: 100%; padding: 14px; background: var(--charcoal); color: var(--gold-light); border: none; border-radius: 12px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; margin-bottom: 12px; }
+  .modal-confirm:hover { background: #3d342d; }
+  .modal-cancel { background: none; border: none; font-family: 'Jost', sans-serif; font-size: 13px; color: var(--muted); cursor: pointer; text-decoration: underline; }
+  .modal-cancel:hover { color: var(--charcoal); }
+  .dl-progress { margin-top: 16px; display: none; }
+  .dl-progress.visible { display: block; }
+  .dl-progress .bar-bg { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .dl-progress .bar-fill { height: 100%; background: linear-gradient(90deg, var(--blush-deep), var(--gold)); width: 0%; transition: width 0.3s; }
+  .dl-progress p { font-size: 12px; color: var(--muted); text-align: center; margin-top: 8px; }
 
+  /* Lightbox */
+  .lightbox { position: fixed; inset: 0; background: rgba(44,37,32,0.92); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .lightbox.open { display: flex; }
   .lightbox-content { max-width: 90vw; max-height: 90vh; position: relative; text-align: center; }
   .lightbox-content img { max-width: 100%; max-height: 80vh; border-radius: 8px; display: block; }
   .lightbox-info { margin-top: 12px; color: rgba(255,255,255,0.7); font-size: 13px; }
-
-  .lightbox-close {
-    position: absolute; top: -14px; right: -14px;
-    width: 32px; height: 32px; border-radius: 50%;
-    background: rgba(255,255,255,0.15); color: white; border: none;
-    cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-  }
+  .lightbox-close { position: absolute; top: -14px; right: -14px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.15); color: white; border: none; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
   .lightbox-close:hover { background: rgba(255,255,255,0.3); }
-
-  .lightbox-nav {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    width: 40px; height: 40px; border-radius: 50%;
-    background: rgba(255,255,255,0.15); color: white; border: none;
-    cursor: pointer; font-size: 22px; display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-  }
+  .lightbox-dl { position: absolute; top: -14px; left: -14px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.15); color: white; border: none; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+  .lightbox-dl:hover { background: rgba(201,169,110,0.5); }
+  .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.15); color: white; border: none; cursor: pointer; font-size: 22px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
   .lightbox-nav:hover { background: rgba(255,255,255,0.3); }
   .lightbox-prev { left: -56px; }
   .lightbox-next { right: -56px; }
+  @media (max-width: 480px) { .lightbox-prev { left: 6px; } .lightbox-next { right: 6px; } }
 
-  @media (max-width: 480px) {
-    .lightbox-prev { left: 6px; }
-    .lightbox-next { right: 6px; }
-  }
-
-  .spinner {
-    display: inline-block; width: 16px; height: 16px;
-    border: 2px solid rgba(232,213,176,0.3); border-top-color: var(--gold-light);
-    border-radius: 50%; animation: spin 0.7s linear infinite;
-  }
+  .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(232,213,176,0.3); border-top-color: var(--gold-light); border-radius: 50%; animation: spin 0.7s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .footer {
-    text-align: center; padding: 40px 0 20px;
-    font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; opacity: 0.6;
-  }
+  .footer { text-align: center; padding: 40px 0 20px; font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; }
 
-  /* Loading overlay */
-  #firebaseLoader {
-    position: fixed; inset: 0; background: var(--cream);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    z-index: 9999; gap: 16px;
-  }
-  #firebaseLoader .loader-ring {
-    width: 40px; height: 40px;
-    border: 3px solid var(--border); border-top-color: var(--gold);
-    border-radius: 50%; animation: spin 0.8s linear infinite;
-  }
+  #firebaseLoader { position: fixed; inset: 0; background: var(--cream); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; gap: 16px; }
+  #firebaseLoader .loader-ring { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; }
   #firebaseLoader p { font-size: 13px; color: var(--muted); letter-spacing: 1px; }
 </style>
 </head>
 <body>
 
-<!-- Loader pendant l'init Firebase -->
-<div id="firebaseLoader">
-  <div class="loader-ring"></div>
-  <p>Chargement…</p>
-</div>
+<div id="firebaseLoader"><div class="loader-ring"></div><p>Chargement…</p></div>
 
 <div class="container" id="appContainer" style="display:none">
 
-  <div class="config-warning" id="configWarning">
-    <strong>⚙️ Configuration requise</strong>
-    Renseignez les noms et la date dans <code>WEDDING_CONFIG</code> dans le code source.
-  </div>
-
   <div class="header">
     <div class="header-ornament">✦ ✦ ✦</div>
-    <h1 id="weddingNames"><em>Prénom</em> &amp; <em>Prénom</em></h1>
-    <div class="header-date" id="weddingDate">JJ Mois AAAA</div>
+    <h1><em>Magali</em> &amp; <em>Philippe</em></h1>
+    <div class="header-date">12 Septembre 2026</div>
     <div class="header-divider"></div>
   </div>
 
+  <!-- Upload -->
   <div class="upload-card">
     <h2>Partagez vos photos</h2>
     <p>Immortalisez ce jour avec nous — chaque cliché compte ✨</p>
@@ -320,7 +183,7 @@
       <input type="file" id="fileInput" accept="image/*" multiple>
       <span class="drop-icon">📷</span>
       <strong>Appuyez pour choisir vos photos</strong>
-      <span>JPG, PNG, HEIC · max <span id="maxSizeLabel">15</span> Mo chacune</span>
+      <span>JPG, PNG, HEIC · max 15 Mo chacune</span>
     </div>
 
     <div class="preview-grid" id="previewGrid"></div>
@@ -340,32 +203,46 @@
     </button>
 
     <div class="progress-wrap" id="progressWrap">
-      <div class="progress-bar-bg">
-        <div class="progress-bar-fill" id="progressFill"></div>
-      </div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
       <div class="progress-label" id="progressLabel">Envoi en cours…</div>
     </div>
 
     <div class="status-msg" id="statusMsg"></div>
   </div>
 
+  <!-- Gallery -->
   <div class="gallery-card">
     <div class="gallery-header">
       <h2>La galerie</h2>
       <span class="gallery-count" id="galleryCount">0 photo</span>
     </div>
+
+    <div class="gallery-toolbar" id="galleryToolbar">
+      <button class="tool-btn" id="selectModeBtn">☑ Sélectionner</button>
+      <button class="tool-btn" id="selectAllBtn" style="display:none">✦ Tout</button>
+      <button class="tool-btn" id="selectNoneBtn" style="display:none">✕ Aucune</button>
+      <button class="download-btn" id="downloadBtn" style="display:none" disabled>⬇ Télécharger</button>
+      <span class="selection-count" id="selectionCount" style="display:none"></span>
+    </div>
+
     <div class="gallery-grid" id="galleryGrid">
       <div class="gallery-empty"><span>🌸</span>Les premières photos apparaîtront ici</div>
     </div>
+
+    <div class="dl-progress" id="dlProgress">
+      <div class="bar-bg"><div class="bar-fill" id="dlFill"></div></div>
+      <p id="dlLabel">Préparation…</p>
+    </div>
   </div>
 
-  <div class="footer">Fait avec amour · <span id="footerYear"></span></div>
+  <div class="footer">Fait avec amour · 2026</div>
 </div>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox">
   <div class="lightbox-content">
     <button class="lightbox-close" id="lightboxClose">×</button>
+    <button class="lightbox-dl" id="lightboxDl" title="Télécharger">⬇</button>
     <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
     <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
     <img id="lightboxImg" src="" alt="">
@@ -373,11 +250,25 @@
   </div>
 </div>
 
-<!-- ============================================================
-  Firebase chargé via CDN jsDelivr (compatible file://)
-============================================================ -->
+<!-- Modal mot de passe -->
+<div class="modal-backdrop" id="pwModal">
+  <div class="modal">
+    <span class="modal-icon">🔐</span>
+    <h3>Accès protégé</h3>
+    <p>Entrez le mot de passe pour télécharger les photos sélectionnées.</p>
+    <input type="password" id="pwInput" placeholder="••••••••" autocomplete="off">
+    <div class="modal-error" id="pwError"></div>
+    <button class="modal-confirm" id="pwConfirm">Valider</button>
+    <button class="modal-cancel" id="pwCancel">Annuler</button>
+    <div class="dl-progress" id="modalDlProgress">
+      <div class="bar-bg"><div class="bar-fill" id="modalDlFill"></div></div>
+      <p id="modalDlLabel">Téléchargement…</p>
+    </div>
+  </div>
+</div>
+
 <script type="module">
-// ── ✏️  CONFIGURATION — modifiez ces valeurs ──────────────────
+// ══════════════════════════════════════════════════════
 const FIREBASE_CONFIG = {
   apiKey:            "AIzaSyDfQTkGf2vHHT5VJXwCTKSf9gODkJeUM4o",
   authDomain:        "photo-mariage-2026.firebaseapp.com",
@@ -388,65 +279,58 @@ const FIREBASE_CONFIG = {
 };
 
 const WEDDING_CONFIG = {
-  names:         " Mélanie & Grégory ",  // Ex : "Sophie & Thomas"
-  date:          "06 Juin 2026",    // Ex : "14 Juin 2026"
-  maxFileSizeMB: 15,
-  maxFiles:      10,
+  names:           "Magali & Philippe",
+  date:            "12 Septembre 2026",
+  downloadPassword:"magaliphilippe2026",  // ← mot de passe téléchargement
+  maxFileSizeMB:   15,
+  maxFiles:        10,
 };
-// ─────────────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════
 
-import { initializeApp }                          from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-storage.js";
+import { initializeApp }                                                             from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL }                     from "https://www.gstatic.com/firebasejs/11.0.0/firebase-storage.js";
 import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
-// Init
 const app     = initializeApp(FIREBASE_CONFIG);
 const storage = getStorage(app);
 const db      = getFirestore(app);
 
-// ── Apply wedding config ──────────────────────────────────────
-const wc = WEDDING_CONFIG;
-document.getElementById('maxSizeLabel').textContent = wc.maxFileSizeMB;
-document.getElementById('weddingDate').textContent  = wc.date;
-document.getElementById('footerYear').textContent   = new Date().getFullYear();
-
-const parts = wc.names.split(/\s*&\s*/);
-document.getElementById('weddingNames').innerHTML = parts.length === 2
-  ? `<em>${parts[0].trim()}</em> &amp; <em>${parts[1].trim()}</em>`
-  : wc.names;
-
-if (wc.names.includes('Prénom') || wc.date.includes('JJ'))
-  document.getElementById('configWarning').classList.add('visible');
-
-// Show app, hide loader
 document.getElementById('firebaseLoader').style.display = 'none';
 document.getElementById('appContainer').style.display   = 'block';
 
-// ── State ─────────────────────────────────────────────────────
-let selectedFiles = [];
-let galleryItems  = [];
-let lbIndex       = 0;
+const wc = WEDDING_CONFIG;
+let selectedFiles  = [];
+let galleryItems   = [];
+let lbIndex        = 0;
+let selectMode     = false;
+let selectedPhotos = new Set();
 
-// ── DOM ───────────────────────────────────────────────────────
-const fileInput    = document.getElementById('fileInput');
-const dropZone     = document.getElementById('dropZone');
-const previewGrid  = document.getElementById('previewGrid');
-const uploadBtn    = document.getElementById('uploadBtn');
-const progressWrap = document.getElementById('progressWrap');
-const progressFill = document.getElementById('progressFill');
-const progressLbl  = document.getElementById('progressLabel');
-const statusMsg    = document.getElementById('statusMsg');
-const galleryGrid  = document.getElementById('galleryGrid');
-const galleryCount = document.getElementById('galleryCount');
+// ── DOM ───────────────────────────────────────────────
+const fileInput      = document.getElementById('fileInput');
+const dropZone       = document.getElementById('dropZone');
+const previewGrid    = document.getElementById('previewGrid');
+const uploadBtn      = document.getElementById('uploadBtn');
+const progressWrap   = document.getElementById('progressWrap');
+const progressFill   = document.getElementById('progressFill');
+const progressLbl    = document.getElementById('progressLabel');
+const statusMsg      = document.getElementById('statusMsg');
+const galleryGrid    = document.getElementById('galleryGrid');
+const galleryCount   = document.getElementById('galleryCount');
+const selectModeBtn  = document.getElementById('selectModeBtn');
+const selectAllBtn   = document.getElementById('selectAllBtn');
+const selectNoneBtn  = document.getElementById('selectNoneBtn');
+const downloadBtn    = document.getElementById('downloadBtn');
+const selectionCount = document.getElementById('selectionCount');
+const pwModal        = document.getElementById('pwModal');
+const pwInput        = document.getElementById('pwInput');
+const pwError        = document.getElementById('pwError');
 
-// ── File selection ────────────────────────────────────────────
+// ── File selection ────────────────────────────────────
 fileInput.addEventListener('change', e => handleFiles(Array.from(e.target.files)));
-
 dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
 dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
 dropZone.addEventListener('drop', e => {
-  e.preventDefault();
-  dropZone.classList.remove('dragover');
+  e.preventDefault(); dropZone.classList.remove('dragover');
   handleFiles(Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/')));
 });
 
@@ -458,8 +342,7 @@ function handleFiles(files) {
     return true;
   });
   selectedFiles = [...selectedFiles, ...ok].slice(0, wc.maxFiles);
-  renderPreviews();
-  updateBtn();
+  renderPreviews(); updateBtn();
 }
 
 function renderPreviews() {
@@ -473,39 +356,32 @@ function renderPreviews() {
   });
   previewGrid.querySelectorAll('.remove-btn').forEach(btn =>
     btn.addEventListener('click', e => {
-      e.stopPropagation();
-      selectedFiles.splice(+btn.dataset.i, 1);
-      renderPreviews(); updateBtn();
+      e.stopPropagation(); selectedFiles.splice(+btn.dataset.i, 1); renderPreviews(); updateBtn();
     })
   );
 }
 
 function updateBtn() {
-  const n   = selectedFiles.length;
+  const n = selectedFiles.length;
   const txt = document.getElementById('uploadBtnText');
   uploadBtn.disabled = n === 0;
   if (txt) txt.textContent = n === 0 ? 'Sélectionnez des photos' : `Envoyer ${n} photo${n > 1 ? 's' : ''}`;
 }
 
-// ── Upload ────────────────────────────────────────────────────
+// ── Upload ────────────────────────────────────────────
 uploadBtn.addEventListener('click', async () => {
   const name    = document.getElementById('guestName').value.trim() || 'Invité anonyme';
   const message = document.getElementById('guestMessage').value.trim();
   const files   = [...selectedFiles];
   if (!files.length) return;
 
-  setUploading(true);
-  hideStatus();
-
-  let done = 0;
-  const urls   = [];
-  const errors = [];
+  setUploading(true); hideStatus();
+  let done = 0; const urls = []; const errors = [];
 
   for (let i = 0; i < files.length; i++) {
-    const file  = files[i];
-    const ext   = file.name.split('.').pop();
-    const sRef  = ref(storage, `photos/${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`);
-
+    const file = files[i];
+    const ext  = file.name.split('.').pop();
+    const sRef = ref(storage, `photos/${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`);
     try {
       await new Promise((resolve, reject) => {
         const task = uploadBytesResumable(sRef, file);
@@ -517,8 +393,7 @@ uploadBtn.addEventListener('click', async () => {
           reject,
           async () => {
             urls.push(await getDownloadURL(task.snapshot.ref));
-            done++;
-            setProgress(Math.round(done / files.length * 100), `${done} / ${files.length} envoyées`);
+            done++; setProgress(Math.round(done / files.length * 100), `${done} / ${files.length} envoyées`);
             resolve();
           }
         );
@@ -527,22 +402,16 @@ uploadBtn.addEventListener('click', async () => {
   }
 
   if (urls.length > 0) {
-    try {
-      await addDoc(collection(db, 'photos'), {
-        author: name, message, urls,
-        uploadedAt: serverTimestamp()
-      });
-    } catch (err) { console.error('Firestore:', err); }
+    try { await addDoc(collection(db, 'photos'), { author: name, message, urls, uploadedAt: serverTimestamp() }); }
+    catch (err) { console.error('Firestore:', err); }
   }
 
   setUploading(false);
 
   if (errors.length === 0) {
     showStatus(`🎉 Merci ${name} ! Vos ${urls.length} photo${urls.length > 1 ? 's' : ''} ont bien été partagées.`, 'success');
-    selectedFiles = [];
-    renderPreviews();
-    updateBtn();
-    document.getElementById('guestName').value    = '';
+    selectedFiles = []; renderPreviews(); updateBtn();
+    document.getElementById('guestName').value = '';
     document.getElementById('guestMessage').value = '';
     fileInput.value = '';
   } else {
@@ -550,37 +419,23 @@ uploadBtn.addEventListener('click', async () => {
   }
 });
 
-// ── Helpers ───────────────────────────────────────────────────
 function setUploading(on) {
   uploadBtn.disabled  = on;
-  uploadBtn.innerHTML = on
-    ? `<span class="spinner"></span><span>Envoi en cours…</span>`
-    : `<span id="uploadBtnText">Envoyer</span>`;
+  uploadBtn.innerHTML = on ? `<span class="spinner"></span><span>Envoi en cours…</span>` : `<span id="uploadBtnText">Envoyer</span>`;
   progressWrap.classList.toggle('visible', on);
   if (!on) progressFill.style.width = '0%';
 }
-
-function setProgress(pct, label) {
-  progressFill.style.width = pct + '%';
-  progressLbl.textContent  = label;
-}
-
-function showStatus(msg, type) {
-  statusMsg.textContent = msg;
-  statusMsg.className   = `status-msg visible ${type}`;
-}
-
+function setProgress(pct, label) { progressFill.style.width = pct + '%'; progressLbl.textContent = label; }
+function showStatus(msg, type) { statusMsg.textContent = msg; statusMsg.className = `status-msg visible ${type}`; }
 function hideStatus() { statusMsg.className = 'status-msg'; }
 
-// ── Galerie temps réel ────────────────────────────────────────
+// ── Galerie temps réel ────────────────────────────────
 const q = query(collection(db, 'photos'), orderBy('uploadedAt', 'desc'));
 onSnapshot(q, snap => {
   galleryItems = [];
   snap.forEach(doc => {
     const d = doc.data();
-    (d.urls || []).forEach(url => galleryItems.push({
-      url, author: d.author || 'Invité', message: d.message || ''
-    }));
+    (d.urls || []).forEach(url => galleryItems.push({ url, author: d.author || 'Invité', message: d.message || '' }));
   });
 
   const n = galleryItems.length;
@@ -591,49 +446,168 @@ onSnapshot(q, snap => {
     return;
   }
 
+  selectedPhotos = new Set([...selectedPhotos].filter(i => i < n));
+  updateSelectionUI();
+
   galleryGrid.innerHTML = '';
   galleryItems.forEach((item, idx) => {
     const el = document.createElement('div');
-    el.className = 'gallery-item';
+    el.className = 'gallery-item' + (selectedPhotos.has(idx) ? ' selected' : '');
+    el.dataset.idx = idx;
     el.innerHTML = `
       <img src="${item.url}" alt="Photo de ${item.author}" loading="lazy">
-      <div class="item-overlay"><span class="item-author">${item.author}</span></div>`;
-    el.addEventListener('click', () => openLightbox(idx));
+      <div class="item-overlay"><span class="item-author">${item.author}</span></div>
+      <div class="select-check">${selectedPhotos.has(idx) ? '✓' : ''}</div>`;
+    el.addEventListener('click', () => { if (selectMode) toggleSelect(idx, el); else openLightbox(idx); });
     galleryGrid.appendChild(el);
   });
 });
 
-// ── Lightbox ──────────────────────────────────────────────────
-function openLightbox(idx) {
-  lbIndex = idx;
-  refreshLightbox();
-  document.getElementById('lightbox').classList.add('open');
+// ── Selection ─────────────────────────────────────────
+selectModeBtn.addEventListener('click', () => {
+  selectMode = !selectMode;
+  document.body.classList.toggle('select-mode', selectMode);
+  selectModeBtn.classList.toggle('active', selectMode);
+  selectModeBtn.textContent = selectMode ? '✕ Annuler' : '☑ Sélectionner';
+  selectAllBtn.style.display  = selectMode ? 'flex' : 'none';
+  selectNoneBtn.style.display = selectMode ? 'flex' : 'none';
+  downloadBtn.style.display   = selectMode ? 'flex' : 'none';
+  selectionCount.style.display = selectMode ? 'inline' : 'none';
+  if (!selectMode) { selectedPhotos.clear(); refreshSelectionDisplay(); }
+  updateSelectionUI();
+});
+
+selectAllBtn.addEventListener('click', () => {
+  galleryItems.forEach((_, i) => selectedPhotos.add(i));
+  refreshSelectionDisplay(); updateSelectionUI();
+});
+
+selectNoneBtn.addEventListener('click', () => {
+  selectedPhotos.clear(); refreshSelectionDisplay(); updateSelectionUI();
+});
+
+function toggleSelect(idx, el) {
+  if (selectedPhotos.has(idx)) { selectedPhotos.delete(idx); el.classList.remove('selected'); el.querySelector('.select-check').textContent = ''; }
+  else { selectedPhotos.add(idx); el.classList.add('selected'); el.querySelector('.select-check').textContent = '✓'; }
+  updateSelectionUI();
 }
+
+function refreshSelectionDisplay() {
+  document.querySelectorAll('.gallery-item').forEach(el => {
+    const idx = +el.dataset.idx; const sel = selectedPhotos.has(idx);
+    el.classList.toggle('selected', sel);
+    el.querySelector('.select-check').textContent = sel ? '✓' : '';
+  });
+}
+
+function updateSelectionUI() {
+  const n = selectedPhotos.size;
+  selectionCount.textContent = n > 0 ? `${n} sélectionnée${n > 1 ? 's' : ''}` : 'Aucune sélection';
+  downloadBtn.disabled = n === 0;
+}
+
+// ── Download avec mot de passe ────────────────────────
+downloadBtn.addEventListener('click', () => { if (selectedPhotos.size === 0) return; openPasswordModal(); });
+
+function openPasswordModal() {
+  pwInput.value = ''; pwError.textContent = '';
+  document.getElementById('modalDlProgress').classList.remove('visible');
+  pwModal.classList.add('open');
+  setTimeout(() => pwInput.focus(), 100);
+}
+
+document.getElementById('pwCancel').addEventListener('click', () => pwModal.classList.remove('open'));
+pwModal.addEventListener('click', e => { if (e.target === pwModal) pwModal.classList.remove('open'); });
+document.getElementById('pwConfirm').addEventListener('click', checkPassword);
+pwInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
+
+function checkPassword() {
+  if (pwInput.value !== wc.downloadPassword) {
+    pwError.textContent = '❌ Mot de passe incorrect.'; pwInput.value = ''; pwInput.focus(); return;
+  }
+  pwError.textContent = ''; startDownload();
+}
+
+async function startDownload() {
+  const indices = [...selectedPhotos];
+  const total   = indices.length;
+  const dlProg  = document.getElementById('modalDlProgress');
+  const dlFill  = document.getElementById('modalDlFill');
+  const dlLabel = document.getElementById('modalDlLabel');
+
+  dlProg.classList.add('visible');
+  document.getElementById('pwConfirm').disabled = true;
+
+  for (let i = 0; i < indices.length; i++) {
+    const item = galleryItems[indices[i]];
+    dlFill.style.width  = Math.round((i / total) * 100) + '%';
+    dlLabel.textContent = `Téléchargement ${i + 1} / ${total}…`;
+
+    await new Promise(resolve => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', item.url, true);
+      xhr.responseType = 'blob';
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const blobUrl = URL.createObjectURL(xhr.response);
+          const ext = xhr.response.type.includes('png') ? 'png' : xhr.response.type.includes('webp') ? 'webp' : 'jpg';
+          const a = document.createElement('a');
+          a.href = blobUrl; a.download = `mariage_photo_${String(i + 1).padStart(3, '0')}.${ext}`;
+          document.body.appendChild(a); a.click(); document.body.removeChild(a);
+          setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+        } else { window.open(item.url, '_blank'); }
+        resolve();
+      };
+      xhr.onerror = () => { window.open(item.url, '_blank'); resolve(); };
+      xhr.send();
+    });
+
+    if (i < indices.length - 1) await new Promise(r => setTimeout(r, 500));
+  }
+
+  dlFill.style.width  = '100%';
+  dlLabel.textContent = `✓ ${total} photo${total > 1 ? 's' : ''} téléchargée${total > 1 ? 's' : ''} !`;
+
+  setTimeout(() => {
+    pwModal.classList.remove('open');
+    document.getElementById('pwConfirm').disabled = false;
+    dlProg.classList.remove('visible');
+  }, 1500);
+}
+
+// ── Lightbox ──────────────────────────────────────────
+function openLightbox(idx) { lbIndex = idx; refreshLightbox(); document.getElementById('lightbox').classList.add('open'); }
 
 function refreshLightbox() {
   const item = galleryItems[lbIndex];
   if (!item) return;
-  document.getElementById('lightboxImg').src         = item.url;
+  document.getElementById('lightboxImg').src          = item.url;
   document.getElementById('lightboxInfo').textContent = item.author + (item.message ? ' · ' + item.message : '');
+  document.getElementById('lightboxDl').onclick = (e) => {
+    e.preventDefault();
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', item.url, true); xhr.responseType = 'blob';
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        const blobUrl = URL.createObjectURL(xhr.response);
+        const ext = xhr.response.type.includes('png') ? 'png' : xhr.response.type.includes('webp') ? 'webp' : 'jpg';
+        const a = document.createElement('a');
+        a.href = blobUrl; a.download = `mariage_photo_${String(lbIndex+1).padStart(3,'0')}.${ext}`;
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+      } else { window.open(item.url, '_blank'); }
+    };
+    xhr.onerror = () => window.open(item.url, '_blank');
+    xhr.send();
+  };
   document.getElementById('lightboxPrev').style.display = lbIndex > 0 ? 'flex' : 'none';
   document.getElementById('lightboxNext').style.display = lbIndex < galleryItems.length - 1 ? 'flex' : 'none';
 }
 
-document.getElementById('lightboxClose').addEventListener('click', () =>
-  document.getElementById('lightbox').classList.remove('open'));
-
-document.getElementById('lightbox').addEventListener('click', e => {
-  if (e.target === document.getElementById('lightbox'))
-    document.getElementById('lightbox').classList.remove('open');
-});
-
-document.getElementById('lightboxPrev').addEventListener('click', e => {
-  e.stopPropagation(); if (lbIndex > 0) { lbIndex--; refreshLightbox(); }
-});
-
-document.getElementById('lightboxNext').addEventListener('click', e => {
-  e.stopPropagation(); if (lbIndex < galleryItems.length - 1) { lbIndex++; refreshLightbox(); }
-});
+document.getElementById('lightboxClose').addEventListener('click', () => document.getElementById('lightbox').classList.remove('open'));
+document.getElementById('lightbox').addEventListener('click', e => { if (e.target === document.getElementById('lightbox')) document.getElementById('lightbox').classList.remove('open'); });
+document.getElementById('lightboxPrev').addEventListener('click', e => { e.stopPropagation(); if (lbIndex > 0) { lbIndex--; refreshLightbox(); } });
+document.getElementById('lightboxNext').addEventListener('click', e => { e.stopPropagation(); if (lbIndex < galleryItems.length - 1) { lbIndex++; refreshLightbox(); } });
 
 document.addEventListener('keydown', e => {
   const lb = document.getElementById('lightbox');
