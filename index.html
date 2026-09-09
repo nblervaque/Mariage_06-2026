@@ -270,12 +270,12 @@
 <script type="module">
 // ══════════════════════════════════════════════════════
 const FIREBASE_CONFIG = {
-  apiKey:            "AIzaSyDfQTkGf2vHHT5VJXwCTKSf9gODkJeUM4o",
-  authDomain:        "photo-mariage-2026.firebaseapp.com",
-  projectId:         "photo-mariage-2026",
-  storageBucket:     "photo-mariage-2026.firebasestorage.app",
-  messagingSenderId: "253717364421",
-  appId:             "1:253717364421:web:17fab827d4053c562efaac"
+  apiKey:            "AIzaSyAhV8mOMN2y2e5yUzO1JcPboEI2D-glknU",
+  authDomain:        "photo-mariage-2026-56485.firebaseapp.com",
+  projectId:         "photo-mariage-2026-56485",
+  storageBucket:     "photo-mariage-2026-56485.firebasestorage.app",
+  messagingSenderId: "703035453961",
+  appId:             "1:703035453961:web:417f516fa2794a39d4fed8"
 };
 
 const WEDDING_CONFIG = {
@@ -293,7 +293,7 @@ import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTim
 
 const app     = initializeApp(FIREBASE_CONFIG);
 const storage = getStorage(app);
-const db      = getFirestore(app, "mariage2026");
+const db      = getFirestore(app);
 
 document.getElementById('firebaseLoader').style.display = 'none';
 document.getElementById('appContainer').style.display   = 'block';
